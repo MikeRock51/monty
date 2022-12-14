@@ -2,9 +2,10 @@
 
 int main(int ac, char *av[])
 {
-        char *error, *line;
+        char *line;
         int fd, fstat, error_size;
         FILE *file;
+	char **line_token;
 
         if (ac != 2)
         {
