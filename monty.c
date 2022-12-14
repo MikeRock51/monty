@@ -2,7 +2,7 @@
 
 int main(int ac, char *av[])
 {
-        char *error;
+        char *error, *line;
         int fd, fstat, error_size;
         FILE *file;
 
@@ -17,5 +17,12 @@ int main(int ac, char *av[])
         {
             fprintf(stderr, "Error: Can't open file %s\n", av[1]);
             exit(EXIT_FAILURE);
+        }
+
+        line = malloc(sizeof(char *));
+        
+        while (fgets(line, sizeof(line), file))
+        {
+            printf("%s", line);
         }
 }
