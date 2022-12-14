@@ -2,8 +2,17 @@
 
 char **tokenize(char *line)
 {
-	char **tokens = malloc(sizeof(char *) * 2);
-	char *delimiyer = " \n";
+	char **tokens = malloc(sizeof(char *) * 2), *token;
+	char *delimiter = " \n";
+	int i = 0;
 
-	tokens[0] = strtok(line, delimiter);
+	token = strtok(line, delimiter);
+	
+	while (token)
+	{
+		tokens[i] = token;
+		token = strtok(NULL, delimiter);
+		i++;
+	}
+	return(tokens);
 }
