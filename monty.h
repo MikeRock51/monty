@@ -12,7 +12,7 @@
 
 #define DELIMITERS "  \n\a\t\b"
 extern char **line_token;
-extern stack_t *stk = NULL;//test stack
+// extern stack_t *stk = NULL;//test stack
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -1,7 +1,6 @@
 #include "monty.h"
 
 char **line_token = NULL;
-// stack_t *stk = NULL;//test stack
 
 int main(int ac, char *av[])
 {
@@ -9,6 +8,7 @@ int main(int ac, char *av[])
         int fd;
         FILE *file;
         size_t line_size = 0, line_number = 0;
+        stack_t *stk = malloc(sizeof(stack_t));//test stack
 
         // stk = NULL;
 
