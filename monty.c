@@ -27,9 +27,15 @@ int main(int ac, char *av[])
             line_token = tokenize(line);
             if (line_token == NULL)
             {
-                
+                if (check_empty_line(line, DELIMITERS) == 1)
+                    continue;
+                else
+                {
+                    fprintf(stderr, "Error: malloc failed");
+                    exit(EXIT_FAILURE);
+                }
             }
+
             
-            line_number++;
         }
 }
