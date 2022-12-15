@@ -73,7 +73,7 @@ void monty_pint(stack_t **stack, unsigned int line_number)
 
         if (*stack == NULL)
         {
-                fprintf(stderr, "L%u: can't pint, stack empty", line_number);
+                fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
                 exit(EXIT_FAILURE);
         }
         nav = *stack;
@@ -82,4 +82,26 @@ void monty_pint(stack_t **stack, unsigned int line_number)
         
         printf("pint: %d\n", nav->n);
         printf("-----------\n");
+}
+
+/**
+ * monty_pop - Removes the top element of a stack
+ * @stack: Double pointer to the top of a stack_t linked list
+ * @line_number: Current line number
+*/
+void monty_pop(stack_t **stack, unsigned int line_number)
+{
+        stack_t *nav;
+
+        if (*stack == NULL)
+        {
+                fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+        nav = *stack;
+        while (nav->prev != NULL)
+                nav = nav->prev;
+        *stack = (*stack)->next;
+        (*stack)->prev == NULL;
+        free(nav);
 }

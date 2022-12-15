@@ -12,6 +12,7 @@
 
 #define DELIMITERS "  \n\a\t\b"
 extern char **line_token;
+extern stack_t *stk = NULL;//test stack
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,4 +49,5 @@ void monty_push(stack_t **stack, unsigned int line_number);
 int check_empty_line(char *line, char *delimiter);
 void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_pint(stack_t **stack, unsigned int line_number);
+void monty_pop(stack_t **stack, unsigned int line_number);
 #endif
