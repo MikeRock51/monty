@@ -7,7 +7,7 @@
 */
 void monty_push(stack_t **stack, unsigned int line_number)
 {
-        stack_t *new, *temp;
+        stack_t *new;
         int i = 0;
 
         new = malloc(sizeof(stack_t));
@@ -21,7 +21,10 @@ void monty_push(stack_t **stack, unsigned int line_number)
         while (line_token[1])
         {
                 if (i == 0 && line_token[1][i] == '-')
-                        i++; continue;
+                {
+                        i++;
+                        continue;
+                }
                 if (line_token[1][i] < '0' || line_token[1][i] > '9')
                 {
                         fprintf(stderr, "L%ld: usage: push integer\n", line_number);
@@ -31,8 +34,8 @@ void monty_push(stack_t **stack, unsigned int line_number)
         }
         new->n = atoi(line_token[1]);
         new->prev = NULL;
-        temp = *stack;
-        new->next = temp;
-        temp->prev = new;
+        new->next = *stack;
+        if (*stack != NULL)
+                (*stack)->prev = new;
         *stack = new;
 }
