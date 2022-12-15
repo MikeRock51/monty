@@ -8,7 +8,7 @@ int main(int ac, char *av[])
         int fd;
         FILE *file;
         size_t line_size = 0, line_number = 1;
-        stack_t *stk = malloc(sizeof(stack_t));//test
+        stack_t *stk = malloc(sizeof(stack_t));//test stack
 
         if (ac != 2)
         {
@@ -38,11 +38,12 @@ int main(int ac, char *av[])
                         exit(EXIT_FAILURE);
                 }
             }
-            if (line_number < 6)
-            {
-                    monty_push(&stk, line_number);
-                    monty_pall(&stk, line_number);
-            }
+        //     if (line_number < 6)
+        //     {
+        //             monty_push(&stk, line_number);
+        //             monty_pall(&stk, line_number);
+        //             monty_pint(&stk, line_number);
+        //     }
             line_number++;
         }
 }

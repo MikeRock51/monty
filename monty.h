@@ -47,4 +47,5 @@ char **tokenize(char *line);
 void monty_push(stack_t **stack, unsigned int line_number);
 int check_empty_line(char *line, char *delimiter);
 void monty_pall(stack_t **stack, unsigned int line_number);
+void monty_pint(stack_t **stack, unsigned int line_number);
 #endif
