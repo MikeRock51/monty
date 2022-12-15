@@ -15,10 +15,10 @@ void monty_push(stack_t **stack, unsigned int line_number)
                 fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
         if (line_token[1] == NULL)
         {
-                fprintf(stderr, "L%ld: usage: push integer\n", line_number);
+                fprintf(stderr, "L%u: usage: push integer\n", line_number);
                 exit(EXIT_FAILURE);
         }
-        while (line_token[1])
+        while (line_token[1][i])
         {
                 if (i == 0 && line_token[1][i] == '-')
                 {
@@ -27,7 +27,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
                 }
                 if (line_token[1][i] < '0' || line_token[1][i] > '9')
                 {
-                        fprintf(stderr, "L%ld: usage: push integer\n", line_number);
+                        fprintf(stderr, "L%u: usage: push integer\n", line_number);
                         exit(EXIT_FAILURE);
                 }
                 i++;
@@ -38,4 +38,21 @@ void monty_push(stack_t **stack, unsigned int line_number)
         if (*stack != NULL)
                 (*stack)->prev = new;
         *stack = new;
+}
+
+void monty_pall(stack_t **stack, unsigned int line_number)
+{
+        stack_t *nav;
+
+        if (*stack == NULL)
+                return;
+        nav = *stack;
+        while (nav->prev != NULL)
+                nav = nav->prev;
+        while (nav->next)
+        {
+                printf("pall: %d\n", nav->n);
+                nav = nav->next;
+        }
+        printf("-----------\n");
 }
