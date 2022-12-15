@@ -10,6 +10,9 @@
 #include <errno.h>
 #include <string.h>
 
+#define DELIMITERS "  \n\a\t\b"
+extern char **line_token;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -41,4 +44,6 @@ typedef struct instruction_s
 } instruction_t;
 
 char **tokenize(char *line);
+void monty_push(stack_t **stack, unsigned int line_number);
+int check_empty_line(char *line, char *delimiter);
 #endif

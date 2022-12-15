@@ -2,7 +2,7 @@
 
 int main(int ac, char *av[])
 {
-        char *line = NULL, **line_token;
+        char *line = NULL;
         int fd;
         FILE *file;
         size_t line_size = 0, line_number = 1;
@@ -25,23 +25,11 @@ int main(int ac, char *av[])
         while (getline(&line, &line_size, file) != -1)
         {
             line_token = tokenize(line);
-            int i = 0;
-            // printf("line %lu\n", line_number);
-            while(line_token[i])
+            if (line_token == NULL)
             {
-                printf("%s\n", line_token[i]);
-                i++;
+                
             }
+            
             line_number++;
         }
-
-        // }
-        // int i = 0;
-        // char s[50] = "      push    6        ";
-        // line_token = tokenize(s);
-        // while(line_token[i])
-        // {
-        //         printf("%s\n", line_token[i]);
-        //         i++;
-        // }
 }
