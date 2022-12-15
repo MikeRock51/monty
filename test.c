@@ -2,7 +2,7 @@
 
 int main()
 {
-        char *line = "        pall     ";
+        char *line = "             ";
 
         printf("%d\n", check_empty_line(line, DELIMITERS));
 }

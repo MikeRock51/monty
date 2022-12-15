@@ -15,8 +15,12 @@ int check_empty_line(char *line, char *delimiter)
         while (line[i])
         {
                 j = 0;
-                while (delimiter[j] != line[i])
+                while (delimiter[j])
+                {
+                        if (delimiter[j] == line[i])
+                                break;
                         j++;
+                }
                 if (delimiter[j] == '\0')
                         return (0);
                 i++;
