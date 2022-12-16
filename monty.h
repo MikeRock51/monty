@@ -50,4 +50,5 @@ int check_empty_line(char *line, char *delimiter);
 void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_pint(stack_t **stack, unsigned int line_number);
 void monty_pop(stack_t **stack, unsigned int line_number);
+void (*get_opcode(char *opcode))(stack_t **, unsigned int);
 #endif
