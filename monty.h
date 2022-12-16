@@ -53,4 +53,5 @@ void monty_pop(stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *opcode))(stack_t **, unsigned int);
 void monty_swap(stack_t **stack, unsigned int line_number);
 unsigned int count_elements(stack_t **stack);
+void monty_add(stack_t **stack, unsigned int line_number);
 #endif

@@ -8,20 +8,21 @@
 void monty_add(stack_t **stack, unsigned int line_number)
 {
         stack_t *nav;
+        unsigned int stack_length = count_elements(stack);
+        int add_result;
 
-        if (*stack == NULL || (*stack)->next == NULL)
+        if (stack_length < 2)
         {
-                fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+                fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
                 exit(EXIT_FAILURE);
         }
 
         nav = (*stack);
-        while (nav->prev != NULL)
-                nav = nav->prev;
+        nav = nav->next;
+        add_result = (*stack)->n + nav->n;
+        nav = *stack;
         *stack = (*stack)->next;
         (*stack)->prev = NULL;
-        nav->prev = *stack;
-        nav->next = (*stack)->next;
-        (*stack)->next->prev = nav;
-        (*stack)->next = nav;
+        (*stack)->n = add_result;
+        free(nav);
 }
