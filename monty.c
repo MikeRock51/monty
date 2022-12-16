@@ -5,14 +5,11 @@ char **line_token = NULL;
 int main(int ac, char *av[])
 {
         char *line = NULL;
-        int fd;
         FILE *file;
         size_t line_size = 0;
         unsigned int line_number = 0;
         void (*opcode_function)(stack_t **, unsigned int);
-        stack_t *stk = malloc(sizeof(stack_t));//test stack
-
-        // stk = NULL;
+        stack_t *stk = malloc(sizeof(stack_t));/*test stack*/
 
         if (ac != 2)
         {
@@ -51,13 +48,15 @@ int main(int ac, char *av[])
                         fprintf(stderr, "L%u: unknown instruction %s\n", line_number, line_token[0]);
                         exit(EXIT_FAILURE);
                 }
-                // if (strcmp(line_token[0], "push") == 0)
-                //         monty_push(&stk, line_number);
-                // else if (strcmp(line_token[0], "pall") == 0)
-                //     monty_pall(&stk, line_number);
-                // else if (strcmp(line_token[0], "pop") == 0)
-                //     monty_pop(&stk, line_number);
-                // else if (strcmp(line_token[0], "pint") == 0)
-                //     monty_pint(&stk, line_number);
+                /* if (strcmp(line_token[0], "push") == 0)
+                        monty_push(&stk, line_number);
+                else if (strcmp(line_token[0], "pall") == 0)
+                    monty_pall(&stk, line_number);
+                else if (strcmp(line_token[0], "pop") == 0)
+                    monty_pop(&stk, line_number);
+                else if (strcmp(line_token[0], "pint") == 0)
+                    monty_pint(&stk, line_number);
+                */
         }
+        return (EXIT_SUCCESS);
 }

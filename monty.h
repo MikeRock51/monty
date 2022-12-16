@@ -1,5 +1,6 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
+#define  _POSIX_C_SOURCE 200809L
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,7 +13,6 @@
 
 #define DELIMITERS "  \n\a\t\b"
 extern char **line_token;
-// extern stack_t *stk = NULL;//test stack
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
