@@ -40,6 +40,8 @@ int main(int ac, char *av[])
                                 exit(EXIT_FAILURE);
                         }
                 }
+                if (line_token[0][0] == '#')
+                        continue;
                 opcode_function = get_opcode(line_token[0]);
                 if (opcode_function != NULL)
                     opcode_function(&stk, line_number);
