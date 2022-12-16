@@ -60,6 +60,7 @@ int main(int ac, char *av[])
                     monty_pint(&stk, line_number);
                 */
         }
+        free_stack(&stk);
         free(stk);
         free(line_token);
         return (EXIT_SUCCESS);

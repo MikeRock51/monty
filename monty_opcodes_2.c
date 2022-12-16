@@ -68,3 +68,21 @@ void monty_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))un
 {
         return;
 }
+
+/**
+ * free_stack - Frees a stack_t stack
+ * @stack: Double pointer to the top of a stack_t linked list
+*/
+void free_stack(stack_t **stack)
+{
+        stack_t *nav;
+
+        nav = *stack;
+        while(nav)
+        {
+                *stack = (*stack)->next;
+                free(nav);
+                nav = *stack;
+        }
+        *stack = NULL;
+}
