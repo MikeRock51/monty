@@ -16,7 +16,7 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
         };
         int i = 0;
 
-        while (opcode_list.opcode[i])
+        while ((opcode_list)->opcode[i])
         {
                 if (strcmp(opcode, opcode_list[i].opcode) == 0)
                 {
