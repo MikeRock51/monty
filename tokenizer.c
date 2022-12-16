@@ -10,7 +10,7 @@ char **tokenize(char *line)
 	if (token == NULL)
 		return (NULL);
 	
-	while (token)
+	while (i < 2 && token)
 	{
 		tokens[i] = token;
 		token = strtok(NULL, DELIMITERS);
