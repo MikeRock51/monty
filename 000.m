@@ -1,4 +1,4 @@
- push -1024 + push 123a
+ pint
 pall
 swap
 pall
