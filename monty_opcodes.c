@@ -56,10 +56,10 @@ void monty_pall(stack_t **stack, __attribute__((unused))unsigned int line_number
                 nav = nav->prev;
         while (nav->next)
         {
-                printf("pall: %d\n", nav->n);
+                printf("%d\n", nav->n);
                 nav = nav->next;
         }
-        printf("-----------\n");
+        /*printf("-----------\n");*/
 }
 
 /**
@@ -80,8 +80,8 @@ void monty_pint(stack_t **stack, unsigned int line_number)
         while (nav->prev != NULL)
                 nav = nav->prev;
         
-        printf("pint: %d\n", nav->n);
-        printf("-----------\n");
+        printf("%d\n", nav->n);
+        /*printf("-----------\n");*/
 }
 
 /**
