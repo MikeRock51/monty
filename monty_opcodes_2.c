@@ -14,6 +14,7 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
                 {"pop", monty_pop},
                 {"swap", monty_swap},
                 {"add", monty_add},
+                {"nop", monty_nop},
                 {NULL, NULL}
         };
         int i = 0;
@@ -52,4 +53,14 @@ unsigned int count_elements(stack_t **stack)
                 nav = nav->next;
         }
         return (stack_length);
+}
+
+/**
+ * monty_nop - Does nothing, lol!
+ * @stack: Double pointer to the top of a stack_t linked list
+ * @line_number: Current line number
+*/
+void monty_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+        return;
 }
