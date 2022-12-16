@@ -26,3 +26,30 @@ void monty_add(stack_t **stack, unsigned int line_number)
         (*stack)->n = add_result;
         free(nav);
 }
+
+/**
+ * monty_sub - Subtracts the top element of the stack from the second top element
+ * @stack: Double pointer to the top of a stack_t linked list
+ * @line_number: Current line number
+*/
+void monty_sub(stack_t **stack, unsigned int line_number)
+{
+        stack_t *nav;
+        unsigned int stack_length = count_elements(stack);
+        int sub_result;
+
+        if (stack_length < 2)
+        {
+                fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+
+        nav = (*stack);
+        nav = nav->next;
+        sub_result = nav->n - (*stack)->n;
+        nav = *stack;
+        *stack = (*stack)->next;
+        (*stack)->prev = NULL;
+        (*stack)->n = sub_result;
+        free(nav);
+}
