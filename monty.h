@@ -51,4 +51,5 @@ void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_pint(stack_t **stack, unsigned int line_number);
 void monty_pop(stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *opcode))(stack_t **, unsigned int);
+void monty_swap(stack_t **stack, unsigned int line_number);
 #endif

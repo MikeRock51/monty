@@ -108,7 +108,7 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_pop - Removes the top element of a stack
+ * monty_swap - Swaps the two top elements of the stack
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
@@ -116,16 +116,19 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 {
         stack_t *nav;
 
-        if (*stack == NULL)
+        if (*stack == NULL || (*stack)->next == NULL)
         {
-                fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+                fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
                 exit(EXIT_FAILURE);
         }
 
-        nav = *stack;
+        nav = (*stack);
         while (nav->prev != NULL)
                 nav = nav->prev;
         *stack = (*stack)->next;
         (*stack)->prev = NULL;
-        free(nav);
+        nav->prev = *stack;
+        nav->next = (*stack)->next;
+        (*stack)->next->prev = nav;
+        (*stack)->next = nav;
 }
