@@ -2,10 +2,13 @@
 
 char **tokenize(char *line)
 {
-	char **tokens = malloc(sizeof(char *) * 2), *token;
+	char **tokens, *token;
 	int i = 0;
-
+	
+	tokens = malloc(sizeof(char *) * 2);
 	token = strtok(line, DELIMITERS);
+	if (token == NULL)
+		return (NULL);
 	
 	while (token)
 	{

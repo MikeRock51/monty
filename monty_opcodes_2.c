@@ -27,3 +27,28 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
         }
         return (NULL);
 }
+
+/**
+ * count_elements - Counts the number of elements on the stack
+ * @stack: Double pointer to the top of a stack_t linked list
+ *
+ * Return: Number of elements on the stack or 0 if stack is empty
+*/
+unsigned int count_elements(stack_t **stack)
+{
+        stack_t *nav;
+        unsigned int stack_length = 0;
+
+        if (*stack == NULL)
+                return (stack_length);
+
+        nav = (*stack);
+        while (nav->prev != NULL)
+                nav = nav->prev;
+        while (nav->next)
+        {
+                stack_length++;
+                nav = nav->next;
+        }
+        return (stack_length);
+}

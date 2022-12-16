@@ -34,7 +34,10 @@ void monty_push(stack_t **stack, unsigned int line_number)
         }
         new->n = atoi(line_token[1]);
         new->prev = NULL;
-        new->next = *stack;
+        if (*stack == NULL)
+                new->next = NULL;
+        else
+                new->next = *stack;
         if (*stack != NULL)
                 (*stack)->prev = new;
         *stack = new;
@@ -115,8 +118,9 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 void monty_swap(stack_t **stack, unsigned int line_number)
 {
         stack_t *nav;
+        unsigned int stack_length = count_elements(stack);
 
-        if (*stack == NULL || (*stack)->next == NULL)
+        if (stack_length < 2)
         {
                 fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
                 exit(EXIT_FAILURE);

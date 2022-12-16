@@ -33,7 +33,7 @@ int main(int ac, char *av[])
                 if (line_token == NULL)
                 {
                         if (check_empty_line(line, DELIMITERS) == 1)
-                        continue;
+                                continue;
                         else
                         {
                                 fprintf(stderr, "Error: malloc failed\n");
@@ -59,5 +59,6 @@ int main(int ac, char *av[])
                 */
         }
         free(stk);
+        free(line_token);
         return (EXIT_SUCCESS);
 }
