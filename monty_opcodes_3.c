@@ -7,5 +7,16 @@
  */
 void monty_pchar(stack_t **stack, unsigned int line_number)
 {
-	
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, empty stack", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->n < 0 && (*stack)->n > 255)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->n);
 }

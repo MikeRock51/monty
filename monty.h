@@ -64,4 +64,5 @@ void checkfile(FILE *file, char *filename);
 void argcount(int n);
 void mallocerror(void);
 void instructionerror(int n);
+void monty_pchar(stack_t **stack, unsigned int line_number);
 #endif
