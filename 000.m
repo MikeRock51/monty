@@ -11,3 +11,5 @@ push 569
 pall
 rotl
 pall
+mul
+pall
