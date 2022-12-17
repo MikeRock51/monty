@@ -2,36 +2,36 @@
 /**
  * get_opcode - Matches instruction with corresponding function
  * @opcode: The instruction to match
- * 
+ *
  * Return: A pointer to the matched opcode function
 */
 void (*get_opcode(char *opcode))(stack_t **, unsigned int)
 {
-        instruction_t opcode_list[] = {
-                {"push", monty_push},
-                {"pall", monty_pall},
-                {"pint", monty_pint},
-                {"pop", monty_pop},
-                {"swap", monty_swap},
-                {"add", monty_add},
-                {"nop", monty_nop},
-                {"sub", monty_sub},
-                {"div", monty_div},
-                {"mul", monty_mul},
-                {"mod", monty_mod},
-                {NULL, NULL}
-        };
-        int i = 0;
+	instruction_t opcode_list[] = {
+		{"push", monty_push},
+		{"pall", monty_pall},
+		{"pint", monty_pint},
+		{"pop", monty_pop},
+		{"swap", monty_swap},
+		{"add", monty_add},
+		{"nop", monty_nop},
+		{"sub", monty_sub},
+		{"div", monty_div},
+		{"mul", monty_mul},
+		{"mod", monty_mod},
+		{NULL, NULL}
+	};
+	int i = 0;
 
-        while (opcode_list[i].opcode)
-        {
-                if (strcmp(opcode, opcode_list[i].opcode) == 0)
-                {
-                        return(opcode_list[i].f);
-                }
-                i++;
-        }
-        return (NULL);
+	while (opcode_list[i].opcode)
+	{
+		if (strcmp(opcode, opcode_list[i].opcode) == 0)
+		{
+			return (opcode_list[i].f);
+		}
+		i++;
+	}
+	return (NULL);
 }
 
 /**
@@ -42,21 +42,21 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
 */
 unsigned int count_elements(stack_t **stack)
 {
-        stack_t *nav;
-        unsigned int stack_length = 0;
+	stack_t *nav;
+	unsigned int stack_length = 0;
 
-        if (*stack == NULL)
-                return (stack_length);
+	if (*stack == NULL)
+		return (stack_length);
 
-        nav = (*stack);
-        while (nav->prev != NULL)
-                nav = nav->prev;
-        while (nav->next)
-        {
-                stack_length++;
-                nav = nav->next;
-        }
-        return (stack_length);
+	nav = (*stack);
+	while (nav->prev != NULL)
+		nav = nav->prev;
+	while (nav->next)
+	{
+		stack_length++;
+		nav = nav->next;
+	}
+	return (stack_length);
 }
 
 /**
@@ -64,9 +64,10 @@ unsigned int count_elements(stack_t **stack)
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
-void monty_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_nop(__attribute__((unused))stack_t **stack,
+									__attribute__((unused))unsigned int line_number)
 {
-        return;
+
 }
 
 /**
@@ -75,14 +76,14 @@ void monty_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))un
 */
 void free_stack(stack_t **stack)
 {
-        stack_t *nav;
+	stack_t *nav;
 
-        nav = *stack;
-        while(nav)
-        {
-                *stack = (*stack)->next;
-                free(nav);
-                nav = *stack;
-        }
-        *stack = NULL;
+	nav = *stack;
+	while (nav)
+	{
+		*stack = (*stack)->next;
+		free(nav);
+		nav = *stack;
+	}
+	*stack = NULL;
 }
