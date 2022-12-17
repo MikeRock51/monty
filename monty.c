@@ -88,7 +88,6 @@ int main(int ac, char *av[])
 
 	}
 	free_stack(&stk);
-	free(stk);
 	free(line_token);
 	return (EXIT_SUCCESS);
 }
