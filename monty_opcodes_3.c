@@ -22,9 +22,9 @@ void monty_pchar(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_pstr - Prints each character of a stack to form a string
- * @stack: Double pointer to the top element of the stack
- * @line_number: Current line number
+ * monty_pstr - prints each character of a stack to form a string
+ * @stack: double pointer to the top element of the stack
+ * @line_number: current line number
  */
 void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
@@ -45,5 +45,31 @@ void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number
 		nav = nav->next;
 	}
 	printf("\n");
+}
+
+/**
+ * monty_rotl - Makes the first element of the stack the last
+ * @stack: double pointer to the top element of the stack
+ * @line_number: current line number
+ */
+void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	stack_t *nav, *temp, *head;
+
+	if (*stack == NULL)
+		return;
+
+	head = ((*stack)->next);
+	head->prev = NULL;
+
+	nav = *stack;
+	while (nav->next)
+		nav = nav->next;
+	temp = *stack;
+	nav->next = temp;
+	temp->prev = nav;
+	temp->next = NULL;
+	*stack = head;
+
 }
 
