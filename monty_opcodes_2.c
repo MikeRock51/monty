@@ -27,7 +27,7 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
 	{
 		if (strcmp(opcode, opcode_list[i].opcode) == 0)
 		{
-			return(opcode_list[i].f);
+			return (opcode_list[i].f);
 		}
 		i++;
 	}
@@ -64,9 +64,10 @@ unsigned int count_elements(stack_t **stack)
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
-void monty_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_nop(__attribute__((unused))stack_t **stack,
+									__attribute__((unused))unsigned int line_number)
 {
-	return;
+
 }
 
 /**
@@ -78,7 +79,7 @@ void free_stack(stack_t **stack)
 	stack_t *nav;
 
 	nav = *stack;
-	while(nav)
+	while (nav)
 	{
 		*stack = (*stack)->next;
 		free(nav);
