@@ -28,7 +28,8 @@ void monty_add(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_sub - Subtracts the top element of the stack from the second top element
+ * monty_sub - Subtracts the top element of the stack
+ * from the second top element
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
@@ -87,7 +88,8 @@ void monty_div(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * monty_mul - Multiplies the second top element of the stack with the top element
+ * monty_mul - Multiplies the second top element
+ *  of the stack with the top element
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
