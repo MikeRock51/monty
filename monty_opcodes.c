@@ -34,10 +34,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = atoi(line_token[1]);
 	new->prev = NULL;
-	if (*stack == NULL)
-		new->next = NULL;
-	else
-		new->next = *stack;
+	new->next = *stack;
 	if (*stack != NULL)
 		(*stack)->prev = new;
 	*stack = new;
@@ -48,22 +45,19 @@ void monty_push(stack_t **stack, unsigned int line_number)
  * @stack: Double pointer to the top of a stack_t linked list
  * @line_number: Current line number
 */
-void monty_pall(stack_t **stack,
-					 __attribute__((unused))unsigned int line_number)
+void monty_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *nav;
 
 	if (*stack == NULL)
 		return;
 	nav = *stack;
-	while (nav->prev != NULL)
-		nav = nav->prev;
-	while (nav->next)
+	while (nav)
 	{
 		printf("%d\n", nav->n);
 		nav = nav->next;
 	}
-	/*printf("-----------\n");*/
+	printf("-----------\n");
 }
 
 /**

@@ -67,4 +67,5 @@ void instructionerror(int n);
 void monty_pchar(stack_t **stack, unsigned int line_number);
 void monty_pstr(stack_t **stack, unsigned int line_number);
 void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number);
+void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number);
 #endif

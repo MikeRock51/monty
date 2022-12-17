@@ -55,8 +55,9 @@ void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number
 void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *nav, *temp, *head;
+	unsigned int stack_length = count_elements(stack);
 
-	if (*stack == NULL)
+	if (*stack == NULL || stack_length < 2)
 		return;
 
 	head = ((*stack)->next);
@@ -71,5 +72,29 @@ void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number
 	temp->next = NULL;
 	*stack = head;
 
+}
+
+/**
+ * monty_rotr - Makes the last element of the stack the first
+ * @stack: double pointer to the top element of the stack
+ * @line_number: current line number
+ */
+void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number)
+{
+	stack_t *last, *temp;
+	unsigned int stack_length = count_elements(stack);
+
+	if (*stack == NULL || stack_length < 2)
+		return;
+
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	temp = last->prev;
+	temp->next = NULL;
+	last->prev = NULL;
+	last->next = *stack;
+	(*stack)->prev = last;
+	*stack = last;
 }
 

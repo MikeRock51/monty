@@ -58,7 +58,7 @@ int main(int ac, char *av[])
 	size_t line_size = 0;
 	unsigned int line_number = 0;
 	void (*opcode_function)(stack_t **, unsigned int);
-	stack_t *stk = malloc(sizeof(stack_t));/*test stack*/
+	stack_t *stk; /*malloc(sizeof(stack_t));test stack*/
 
 	argcount(ac);
 
@@ -89,5 +89,7 @@ int main(int ac, char *av[])
 	}
 	free_stack(&stk);
 	free(line_token);
+	free(line);
+	fclose(file);
 	return (EXIT_SUCCESS);
 }
