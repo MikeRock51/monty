@@ -1,6 +1,5 @@
         # push 1
 push 2
-push 100
-push 15
-mod
+pall
+push 1 5 3
 pall

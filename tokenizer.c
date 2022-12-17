@@ -13,12 +13,15 @@ char **tokenize(char *line)
 	token = strtok(line, DELIMITERS);
 	if (token == NULL)
 		return (NULL);
-
-	while (i < 2 && token)
+	
+	while (i < 2)
 	{
 		tokens[i] = token;
 		token = strtok(NULL, DELIMITERS);
 		i++;
 	}
-	return (tokens);
+	token = strtok(NULL, DELIMITERS);
+	if (token != NULL)
+		return (NULL);
+	return(tokens);
 }
