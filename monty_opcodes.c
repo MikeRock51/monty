@@ -53,7 +53,6 @@ void monty_pall(stack_t **stack,
 		printf("%d\n", nav->n);
 		nav = nav->next;
 	}
-/*	printf("-----------\n");*/
 }
 
 /**
