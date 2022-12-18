@@ -7,12 +7,8 @@
 */
 void monty_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
 	int i = 0;
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-		fprintf(stderr, "Error: malloc failed\n"), exit(EXIT_FAILURE);
 	if (line_token[1] == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -32,12 +28,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	new->n = atoi(line_token[1]);
-	new->prev = NULL;
-	new->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = new;
-	*stack = new;
+	monty_push_stack(stack);
 }
 
 /**
