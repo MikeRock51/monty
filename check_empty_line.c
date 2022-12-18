@@ -11,6 +11,7 @@
 */
 int check_empty_line(char *line, char *delimiter)
 {
+
 	int i = 0, j;
 
 	if (line[i] == '\n')
@@ -29,4 +30,5 @@ int check_empty_line(char *line, char *delimiter)
 		i++;
 	}
 	return (1);
+
 }
