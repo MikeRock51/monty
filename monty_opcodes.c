@@ -69,9 +69,7 @@ void monty_pint(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	nav = *stack;
-	while (nav->prev != NULL)
-		nav = nav->prev;
+	nav = (*stack)->next;
 
 	printf("%d\n", nav->n);
 	/*printf("-----------\n");*/
@@ -86,13 +84,13 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *nav;
 
-	if (*stack == NULL)
+	if ((*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	nav = *stack;
+	nav = (*stack)->next;
 	while (nav->prev != NULL)
 		nav = nav->prev;
 	*stack = (*stack)->next;
@@ -107,7 +105,7 @@ void monty_pop(stack_t **stack, unsigned int line_number)
 */
 void monty_swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *nav, *temp;
 	unsigned int stack_length = count_elements(stack);
 
 	if (stack_length < 2)
@@ -116,13 +114,12 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	while (nav->prev != NULL)
-		nav = nav->prev;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	temp = (*stack)->next;
+	nav = temp->next;
 	nav->prev = *stack;
-	nav->next = (*stack)->next;
-	(*stack)->next->prev = nav;
+	temp->next = nav->next;
+	nav->next = temp;
+	temp->next->prev = temp;
+	temp->prev = nav;
 	(*stack)->next = nav;
 }

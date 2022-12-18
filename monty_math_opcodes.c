@@ -7,7 +7,7 @@
 */
 void monty_add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *second, *third;
 	unsigned int stack_length = count_elements(stack);
 	int add_result;
 
@@ -17,14 +17,13 @@ void monty_add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	nav = nav->next;
-	add_result = (*stack)->n + nav->n;
-	nav = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->n = add_result;
-	free(nav);
+	second = (*stack)->next;
+	third = second->next;
+	add_result = third->n + second->n;
+	second->n = add_result;
+	second->next = third->next;
+	third->next->prev = second;
+	free(third);
 }
 
 /**
@@ -35,7 +34,7 @@ void monty_add(stack_t **stack, unsigned int line_number)
 */
 void monty_sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *second, *third;
 	unsigned int stack_length = count_elements(stack);
 	int sub_result;
 
@@ -45,14 +44,13 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	nav = nav->next;
-	sub_result = nav->n - (*stack)->n;
-	nav = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->n = sub_result;
-	free(nav);
+	second = (*stack)->next;
+	third = second->next;
+	sub_result = second->n - third->n;
+	second->n = sub_result;
+	second->next = third->next;
+	third->next->prev = second;
+	free(third);
 }
 
 /**
@@ -62,7 +60,7 @@ void monty_sub(stack_t **stack, unsigned int line_number)
 */
 void monty_div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *second, *third;
 	unsigned int stack_length = count_elements(stack);
 	int div_result;
 
@@ -72,19 +70,20 @@ void monty_div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	nav = nav->next;
-	if ((*stack)->n == 0)
+	second = (*stack)->next;
+	third = second->next;
+	if (second->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	div_result = nav->n / (*stack)->n;
-	nav = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->n = div_result;
-	free(nav);
+
+	div_result = third->n / second->n;
+	second->n = div_result;
+	second->next = third->next;
+	third->next->prev = second;
+	free(third);
+
 }
 
 /**
@@ -95,7 +94,7 @@ void monty_div(stack_t **stack, unsigned int line_number)
 */
 void monty_mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *second, *third;
 	unsigned int stack_length = count_elements(stack);
 	int mul_result;
 
@@ -105,14 +104,13 @@ void monty_mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	nav = nav->next;
-	mul_result = nav->n * (*stack)->n;
-	nav = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->n = mul_result;
-	free(nav);
+	second = (*stack)->next;
+	third = second->next;
+	mul_result = third->n * second->n;
+	second->n = mul_result;
+	second->next = third->next;
+	third->next->prev = second;
+	free(third);
 }
 
 /**
@@ -123,7 +121,7 @@ void monty_mul(stack_t **stack, unsigned int line_number)
 */
 void monty_mod(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nav;
+	stack_t *second, *third;
 	unsigned int stack_length = count_elements(stack);
 	int mod_result;
 
@@ -133,17 +131,17 @@ void monty_mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	nav = (*stack);
-	nav = nav->next;
-	if ((*stack)->n == 0)
+	second = (*stack)->next;
+	third = second->next;
+	if (second->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	mod_result = nav->n % (*stack)->n;
-	nav = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->n = mod_result;
-	free(nav);
+
+	mod_result = third->n % second->n;
+	second->n = mod_result;
+	second->next = third->next;
+	third->next->prev = second;
+	free(third);
 }
