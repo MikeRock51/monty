@@ -81,3 +81,16 @@ monty opcodes execution are explained below:
 |pstr	|	Prints the string starting at the top of the stack|
 |rotl	|	Rotates the stack to the top|
 |rotr	|	Rotates the stack to the bottom|
+
+When a **nonextistent opcode** is passed, the interpreter prints an error message and stops:
+```
+$ cat errorfile.m
+push 1
+pint
+pcx
+$ ./monty errorfile.m
+1
+L3: unknown instruction pcx
+```
+## Return value
+When there is no errors, monty returns 0. Otherwise, returns 1
