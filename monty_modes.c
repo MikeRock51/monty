@@ -35,7 +35,7 @@ void monty_stack_mode(stack_t **stack)
 */
 void monty_push_stack(stack_t **stack)
 {
-	stack_t *new;
+	stack_t *new, *head;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
@@ -43,11 +43,12 @@ void monty_push_stack(stack_t **stack)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	head = (*stack)->next;
 	new->n = atoi(line_token[1]);
-	new->prev = NULL;
-	new->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = new;
+	new->prev = *stack;
+	new->next = head;
+	if (head != NULL)
+		head->prev = new;
 	*stack = new;
 }
 
