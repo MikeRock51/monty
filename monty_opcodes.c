@@ -72,7 +72,6 @@ void monty_pint(stack_t **stack, unsigned int line_number)
 	nav = (*stack)->next;
 
 	printf("%d\n", nav->n);
-	/*printf("-----------\n");*/
 }
 
 /**
