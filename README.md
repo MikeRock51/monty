@@ -12,7 +12,6 @@ $ cat file.m
 push 0
 push 1
 push 2
-```
 # Printing all elements
 pall
 push 3
@@ -28,4 +27,4 @@ push 5
 # Setting LIFO
 stack
 push 5
-$
+```
