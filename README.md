@@ -33,3 +33,27 @@ push 5
 - C files are compiled using gcc 4.8.4 combined with flags
 - C files are written according to the C90 standard
 - Tested on Ubuntu 14.04 LTS
+
+## Usage
+*files compiled with:*
+```
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+$
+```
+*The synopsis of the interpreter is the following:*
+```
+$ ./monty [filename]
+$
+```
+How To run:
+```
+$ ./monty file.m
+2
+1
+0
+0
+3
+2
+1
+$
+```
