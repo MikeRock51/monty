@@ -57,7 +57,7 @@ void monty_pall(stack_t **stack, __attribute__((unused))unsigned int line_number
 		printf("%d\n", nav->n);
 		nav = nav->next;
 	}
-	printf("-----------\n");
+/*	printf("-----------\n");*/
 }
 
 /**

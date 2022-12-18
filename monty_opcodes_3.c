@@ -97,4 +97,3 @@ void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number
 	(*stack)->prev = last;
 	*stack = last;
 }
-
