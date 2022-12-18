@@ -20,6 +20,7 @@ char **tokenize(char *line)
 		token = strtok(NULL, DELIMITERS);
 		i++;
 	}
+
   /**
   * token = strtok(NULL, DELIMITERS);
   * if (token != NULL)
