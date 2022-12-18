@@ -28,7 +28,8 @@ void monty_pchar(stack_t **stack, unsigned int line_number)
  * @stack: double pointer to the top element of the stack
  * @line_number: current line number
  */
-void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_pstr(stack_t **stack,
+							__attribute__((unused))unsigned int line_number)
 {
 	stack_t *nav, *top = (*stack)->next;
 
@@ -40,7 +41,7 @@ void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number
 
 	nav = top;
 	while (nav)
-	{	
+	{
 		if ((nav->n < 0 && nav->n > 255) || nav->n == 0)
 			break;
 		printf("%c", nav->n);
@@ -54,7 +55,8 @@ void monty_pstr(stack_t **stack, __attribute__((unused))unsigned int line_number
  * @stack: double pointer to the top element of the stack
  * @line_number: current line number
  */
-void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_rotl(stack_t **stack,
+							__attribute__((unused))unsigned int line_number)
 {
 	stack_t *nav, *temp, *head;
 	unsigned int stack_length = count_elements(stack);
@@ -79,7 +81,8 @@ void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number
  * @stack: double pointer to the top element of the stack
  * @line_number: current line number
  */
-void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_rotr(stack_t **stack,
+							__attribute__((unused))unsigned int line_number)
 {
 	stack_t *last, *temp, *temp2;
 	unsigned int stack_length = count_elements(stack);

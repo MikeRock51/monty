@@ -38,14 +38,13 @@ int main(int ac, char *av[])
 		}
 		if (line_token[0][0] == '#')
 			continue;
-		if (stk== NULL)
+		if (stk == NULL)
 			monty_stack_mode(&stk, line_number);
 		opcode_function = get_opcode(line_token[0]);
 		if (opcode_function != NULL)
 			opcode_function(&stk, line_number);
 		else
 			instructionerror(line_number);
-
 	}
 	free_stack(&stk);
 	free(line_token);

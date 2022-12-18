@@ -3,14 +3,16 @@
 /**
  * monty_queue_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
+ * @line_number: the number of line
 */
-void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_queue_mode(stack_t **stack,
+									__attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
 
 	if (mode == NULL)
 		mallocerror();
-	
+
 	mode->n = QUEUE_MODE;
 	mode->prev = NULL;
 	mode->next = NULL;
@@ -20,8 +22,10 @@ void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_
 /**
  * monty_stack_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
+ * @line_number: the number of line
 */
-void monty_stack_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
+void monty_stack_mode(stack_t **stack,
+									__attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
 
