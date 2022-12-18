@@ -28,3 +28,8 @@ push 5
 stack
 push 5
 ```
+## Technologies
+- Interpreter was written with C language
+- C files are compiled using gcc 4.8.4 combined with flags
+- C files are written according to the C90 standard
+- Tested on Ubuntu 14.04 LTS
