@@ -28,7 +28,10 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	monty_push_stack(stack);
+	if ((*stack)->n == QUEUE_MODE)
+		monty_push_queue(stack);
+	else
+		monty_push_stack(stack);
 }
 
 /**
@@ -42,7 +45,8 @@ void monty_pall(stack_t **stack, __attribute__((unused))unsigned int line_number
 
 	if (*stack == NULL)
 		return;
-	nav = *stack;
+
+	nav = (*stack)->next;
 	while (nav)
 	{
 		printf("%d\n", nav->n);

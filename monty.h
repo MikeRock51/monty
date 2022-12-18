@@ -73,4 +73,10 @@ void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number
 void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number);
 void monty_push_stack(stack_t **stack);
 void monty_push_queue(stack_t **stack);
+void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_number);
+void monty_stack_mode(stack_t **stack, __attribute__((unused))unsigned int line_number);
+void instructionerror(int n);
+void mallocerror(void);
+void argcount(int n);
+void checkfile(FILE *file, char *filename);
 #endif

@@ -23,6 +23,8 @@ void (*get_opcode(char *opcode))(stack_t **, unsigned int)
 		{"pstr", monty_pstr},
 		{"rotl", monty_rotl},
 		{"rotr", monty_rotr},
+		{"stack", monty_stack_mode},
+		{"queue", monty_queue_mode},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -49,10 +51,10 @@ unsigned int count_elements(stack_t **stack)
 	stack_t *nav;
 	unsigned int stack_length = 0;
 
-	if (*stack == NULL)
+	if ((*stack)->next == NULL)
 		return (stack_length);
 
-	nav = (*stack);
+	nav = (*stack)->next;
 	while (nav->prev != NULL)
 		nav = nav->prev;
 	while (nav->next)

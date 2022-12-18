@@ -9,7 +9,7 @@ push 8
 push 9
 push 569
 pall
-#rotl
-#pall
+rotr
+pall
 #mul
 #pall

@@ -4,29 +4,34 @@
  * monty_queue_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
 */
-void monty_queue_mode(stack_t **stack)
+void monty_queue_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
-	
-	(*stack)->n = QUEUE_MODE;
-	(*stack)->prev = NULL;
-	(*stack)->next = NULL;
 
-	(void)mode;
+	if (mode == NULL)
+		mallocerror();
+	
+	mode->n = QUEUE_MODE;
+	mode->prev = NULL;
+	mode->next = NULL;
+	*stack = mode;
 }
 
 /**
  * monty_stack_mode - Sets the format of data to a stack(LIFO)
  * @stack: Double pointer to the top of a stack_t linked list
 */
-void monty_stack_mode(stack_t **stack)
+void monty_stack_mode(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	stack_t *mode = malloc(sizeof(stack_t));
-	
-	(*stack)->n = STACK_MODE;
-	(*stack)->prev = NULL;
-	(*stack)->next = NULL;
-	(void)mode;
+
+	if (mode == NULL)
+		mallocerror();
+
+	mode->n = STACK_MODE;
+	mode->prev = NULL;
+	mode->next = NULL;
+	*stack = mode;
 }
 
 /**
@@ -35,21 +40,22 @@ void monty_stack_mode(stack_t **stack)
 */
 void monty_push_stack(stack_t **stack)
 {
-	stack_t *new, *head;
+	stack_t *new, *temp;
 
+/*	printf("Mode: %d\n", (*stack)->n);*/
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	head = (*stack)->next;
 	new->n = atoi(line_token[1]);
+	temp = (*stack)->next;
 	new->prev = *stack;
-	new->next = head;
-	if (head != NULL)
-		head->prev = new;
-	*stack = new;
+	new->next = temp;
+	(*stack)->next = new;
+	if (temp != NULL)
+		temp->prev = new;
 }
 
 /**

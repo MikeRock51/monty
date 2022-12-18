@@ -57,21 +57,19 @@ void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number
 	stack_t *nav, *temp, *head;
 	unsigned int stack_length = count_elements(stack);
 
-	if (*stack == NULL || stack_length < 2)
+	if ((*stack)->next == NULL || stack_length < 2)
 		return;
+	head = (*stack)->next->next;
+	temp = (*stack)->next;
+	head->prev = *stack;
+	(*stack)->next = head;
 
-	head = ((*stack)->next);
-	head->prev = NULL;
-
-	nav = *stack;
+	nav = temp;
 	while (nav->next)
 		nav = nav->next;
-	temp = *stack;
 	nav->next = temp;
 	temp->prev = nav;
 	temp->next = NULL;
-	*stack = head;
-
 }
 
 /**
@@ -81,19 +79,20 @@ void monty_rotl(stack_t **stack, __attribute__((unused))unsigned int line_number
  */
 void monty_rotr(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-	stack_t *last, *temp;
+	stack_t *last, *temp, *temp2;
 	unsigned int stack_length = count_elements(stack);
 
-	if (*stack == NULL || stack_length < 2)
+	if ((*stack)->next == NULL || stack_length < 2)
 		return;
 
 	last = *stack;
+	temp2 = (*stack)->next;
 	while (last->next)
 		last = last->next;
 	temp = last->prev;
 	temp->next = NULL;
-	last->prev = NULL;
-	last->next = *stack;
-	(*stack)->prev = last;
-	*stack = last;
+	last->prev = *stack;
+	last->next = temp2;
+	(*stack)->next = last;
+	temp2->prev = last;
 }
