@@ -30,5 +30,4 @@ int check_empty_line(char *line, char *delimiter)
 		i++;
 	}
 	return (1);
-
 }
